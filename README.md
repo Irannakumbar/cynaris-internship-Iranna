@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Cynaris Internship
 This repository contains my Full Stack Development
 internship tasks and weekly assignments.
@@ -15,6 +16,14 @@ Cynaris Solutions – Full Stack Development Internship
 ## Objective
 To learn CSS Flexbox and Grid and use them to create responsive webpage layouts.
 
+=======
+# Week 1 - Day 2: CSS Flexbox & Grid
+
+## Internship
+Cynaris Solutions – Full Stack Development Internship
+## Objective
+To learn CSS Flexbox and Grid and use them to create responsive webpage layouts.
+>>>>>>> 4c5a8e4 (Add Week 1, Day 2 details on CSS Flexbox and Grid)
 ## Tasks Completed
 1. Created a navigation bar using CSS Flexbox.
 2. Created a three-column project card layout using CSS Grid.
