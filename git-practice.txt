@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-Learning Git Conflict Resolution
-=======
+Git Practice - Day 5
+Learning Git branching
+Learning Git rebase
 Learning Git Merge
->>>>>>> feature/conflict-practice
+Learning Git Conflict Resolution
