@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Advanced CSS UI Playground</title>
+
+    <!-- Normal CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Advanced CSS -->
+    <link rel="stylesheet" href="advanced_styles.css">
+</head>
+
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <div class="logo">CSS Playground</div>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#theme">Theme</a>
+            <a href="#animations">Animations</a>
+            <a href="#pseudo">Pseudo Elements</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="theme-btn" id="themeToggle">
+            🌙 Dark Mode
+        </button>
+    </header>
+
+
+    <!-- Home Section -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="container">
+
+                <h1>Explore Advanced CSS</h1>
+
+                <p>
+                    Discover modern CSS techniques including
+                    custom properties, animations, pseudo-elements
+                    and smooth scrolling.
+                </p>
+
+                <a href="#theme">
+                    <button class="theme-btn">Explore Now</button>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Task 1: Theme Switcher -->
+        <section id="theme">
+
+            <div class="container">
+
+                <h2 class="section-title">
+                    01. Dark & Light Theme
+                </h2>
+
+                <div class="cards">
+
+                    <div class="card">
+                        <h3>Custom Properties</h3>
+
+                        <p>
+                            CSS variables make it easy to manage
+                            colors and styles across a website.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Theme Switching</h3>
+
+                        <p>
+                            Switch between dark and light themes
+                            using CSS custom properties.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Task 2: Animations -->
+        <section id="animations">
+
+            <div class="container">
+
+                <h2 class="section-title">
+                    02. CSS Animations
+                </h2>
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <h3>Loading Spinner</h3>
+
+                        <div class="spinner-container">
+                            <div class="spinner"></div>
+                        </div>
+
+                        <p>CSS-only rotating loading spinner.</p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>Progress Bar</h3>
+
+                        <div class="progress-container">
+
+                            <div class="progress">
+                                <div class="progress-fill"></div>
+                            </div>
+
+                        </div>
+
+                        <p>Animated progress bar using CSS.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Task 3: Pseudo Elements -->
+        <section id="pseudo">
+
+            <div class="container">
+
+                <h2 class="section-title">
+                    03. Pseudo Elements
+                </h2>
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <h3>::before Element</h3>
+
+                        <p>
+                            This card uses the before pseudo-element
+                            to create a decorative top border.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>::after Element</h3>
+
+                        <p>
+                            This card uses the after pseudo-element
+                            to add decorative content.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Task 4: Smooth Scroll and Sticky Navbar -->
+        <section id="contact">
+
+            <div class="container">
+
+                <h2 class="section-title">
+                    04. Smooth Scroll & Sticky Navigation
+                </h2>
+
+                <div class="card">
+
+                    <h3>Sticky Navigation</h3>
+
+                    <p>
+                        Scroll this page to see the navigation
+                        bar stay at the top of the screen.
+                    </p>
+
+                    <p>
+                        Click the navigation links to experience
+                        smooth scrolling between sections.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Advanced CSS UI Playground |
+            Built with HTML and CSS
+        </p>
+
+    </footer>
+
+
+    <!-- Theme Switcher JavaScript -->
+    <script>
+
+        const themeToggle = document.getElementById("themeToggle");
+
+        themeToggle.addEventListener("click", function () {
+
+            const currentTheme =
+                document.documentElement.getAttribute("data-theme");
+
+            if (currentTheme === "dark") {
+
+                document.documentElement.setAttribute("data-theme", "light");
+
+                themeToggle.textContent = " Dark Mode";
+
+            } else {
+
+                document.documentElement.setAttribute("data-theme", "dark");
+
+                themeToggle.textContent = "  Light Mode";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

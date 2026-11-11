@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+header {
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.navbar a {
+    text-decoration: none;
+    font-weight: 600;
+}
+.theme-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.container {
+    width: 85%;
+    max-width: 1100px;
+    margin: auto;
+}
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+    padding: 60px 0;
+    scroll-margin-top: 90px;
+}
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 35px;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+.card {
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+}
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+.progress-container {
+    margin-top: 25px;
+}
+button {
+    cursor: pointer;
+}
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+/* 15. Responsive Design */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 92%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+}
