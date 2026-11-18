@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', 'Home')
@@ -9,5 +10,5 @@
 
     <p>Welcome to our Laravel Student Portal. This application demonstrates Laravel routing, controllers and Blade templates.</p>
 
-    <a href="{{ route('students') }}">View Students</a>
+    <a href="{{ route('students.index') }}">View Students</a>
 @endsection

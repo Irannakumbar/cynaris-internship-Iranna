@@ -5,17 +5,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 
-// Home page - GET
+Route::resource('students', StudentController::class);
+
+// Home page
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// About page - GET
+// About page
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
-// Contact page - GET
+// Contact page
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
-// Contact form submission - POST
+// Contact form submission
 Route::post('/contact', [HomeController::class, 'submitContact'])->name('contact.submit');
-
-// Student page - GET
-Route::get('/students', [StudentController::class, 'index'])->name('students');
