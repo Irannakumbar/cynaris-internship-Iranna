@@ -56,3 +56,52 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Week 3 – Day 4: Database Integration
+
+### Database Structure
+- **Posts table:** Stores post title, content, status, and timestamps.
+- **Comments table:** Stores comments linked to posts using a foreign key `post_id`.
+- **Relationship:** One post can have many comments, and each comment belongs to one post.
+
+### Eloquent Relationships
+- `Post::comments()` – hasMany relationship.
+- `Comment::post()` – belongsTo relationship.
+
+### Eloquent Query Examples
+
+```php
+// Retrieve all posts
+Post::all();
+
+// Filter published posts
+Post::where('status', 'published')->get();
+
+// Sort posts by latest date
+Post::orderBy('created_at', 'desc')->get();
+
+// Retrieve published posts sorted by latest date
+Post::where('status', 'published')
+    ->orderBy('created_at', 'desc')
+    ->get();
+
+// Eager load comments to avoid N+1 queries
+Post::with('comments')->get();
+
+// Retrieve posts with their comments
+Post::with('comments')->get();
+```
+
+### Database Seeding
+- Used Laravel Factories to generate fake data.
+- Created 20 posts.
+- Generated 2 comments per post.
+- Seeder: `PostSeeder`.
+
+### Technologies Used
+- Laravel
+- PHP
+- SQLite
+- Eloquent ORM
+- Laravel Factories and Seeders
