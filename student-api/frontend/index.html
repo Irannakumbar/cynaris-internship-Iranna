@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+</head>
+<body>
+
+    <h1>Student Management System</h1>
+
+    <h2>Add New Student</h2>
+
+    <input type="text" id="name" placeholder="Student Name">
+    <br><br>
+
+    <input type="email" id="email" placeholder="Student Email">
+    <br><br>
+
+    <input type="text" id="course" placeholder="Course">
+    <br><br>
+
+
+<hr>
+
+<h2>Update Student</h2>
+
+<input type="number" id="updateId" placeholder="Student ID">
+<br><br>
+
+<input type="text" id="updateName" placeholder="New Student Name">
+<br><br>
+
+<input type="email" id="updateEmail" placeholder="New Student Email">
+<br><br>
+
+<input type="text" id="updateCourse" placeholder="New Course">
+<br><br>
+
+<button onclick="updateStudent()">Update Student</button>
+
+
+<hr>
+
+<h2>Delete Student</h2>
+
+<input type="number" id="deleteId" placeholder="Student ID">
+<br><br>
+
+<button onclick="deleteStudent()">Delete Student</button>
+
+    
+
+    <hr>
+
+    <h2>Student List</h2>
+
+    <button onclick="getStudents()">Load Students</button>
+
+    <div id="studentList"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
