@@ -8,13 +8,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    // GET: Fetch all students
     public function index()
     {
         return response()->json(Student::all(), 200);
     }
 
-    // POST: Create a student
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -28,7 +26,6 @@ class StudentController extends Controller
         return response()->json($student, 201);
     }
 
-    // GET: Fetch a single student
     public function show($id)
     {
         $student = Student::find($id);
@@ -40,7 +37,6 @@ class StudentController extends Controller
         return response()->json($student, 200);
     }
 
-    // PUT: Update a student
     public function update(Request $request, $id)
     {
         $student = Student::find($id);
@@ -60,7 +56,6 @@ class StudentController extends Controller
         return response()->json($student, 200);
     }
 
-    // DELETE: Delete a student
     public function destroy($id)
     {
         $student = Student::find($id);
@@ -71,6 +66,8 @@ class StudentController extends Controller
 
         $student->delete();
 
-        return response()->json(['message' => 'Student deleted successfully'], 200);
+        return response()->json([
+            'message' => 'Student deleted successfully'
+        ], 200);
     }
 }
