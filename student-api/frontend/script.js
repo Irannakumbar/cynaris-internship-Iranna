@@ -205,3 +205,7 @@ async function deleteStudent() {
         console.error("DELETE API Error:", error);
     }
 }
+// Load students when page opens
+document.addEventListener("DOMContentLoaded", () => {
+    getStudents();
+});

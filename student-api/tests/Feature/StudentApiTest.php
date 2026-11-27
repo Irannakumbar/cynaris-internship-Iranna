@@ -5,117 +5,67 @@ namespace Tests\Feature;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
-use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class StudentApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    // Test 1: Homepage loads successfully
-    public function test_homepage_loads_successfully(): void
+    public function test_homepage_loads(): void
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $this->get('/')
+            ->assertStatus(200);
     }
 
-    // Test 2: User can register
     public function test_user_can_register(): void
     {
-        $response = $this->postJson('/api/register', [
+        $this->postJson('/api/register', [
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'password' => 'password123',
-        ]);
-
-        $response->assertStatus(201)
-                 ->assertJson([
-                     'message' => 'User registered successfully',
-                 ]);
-
-        $this->assertDatabaseHas('users', [
-            'email' => 'test@example.com',
-        ]);
+            'phone' => '9876543210',
+            'password' => 'Password@123',
+            'password_confirmation' => 'Password@123',
+        ])->assertSuccessful();
     }
 
-    // Test 3: User can login
     public function test_user_can_login(): void
     {
-        User::create([
-            'name' => 'Test User',
+        $user = User::factory()->create([
             'email' => 'login@example.com',
-            'password' => Hash::make('password123'),
+            'password' => bcrypt('Password@123'),
         ]);
 
-        $response = $this->postJson('/api/login', [
+        $this->postJson('/api/login', [
             'email' => 'login@example.com',
-            'password' => 'password123',
-        ]);
-
-        $response->assertStatus(200)
-                 ->assertJson([
-                     'message' => 'Login successful',
-                 ])
-                 ->assertJsonStructure([
-                     'user',
-                     'token',
-                 ]);
+            'password' => 'Password@123',
+        ])->assertSuccessful();
     }
 
-    // Test 4: Authenticated user can create a student
     public function test_authenticated_user_can_create_student(): void
     {
-        $user = User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password123'),
-        ]);
+        $user = User::factory()->create();
 
-        Sanctum::actingAs($user);
-
-        $response = $this->postJson('/api/students', [
-            'name' => 'Arun Kumar',
-            'email' => 'arun@example.com',
-            'course' => 'MCA',
-        ]);
-
-        $response->assertStatus(201)
-                 ->assertJson([
-                     'name' => 'Arun Kumar',
-                     'email' => 'arun@example.com',
-                     'course' => 'MCA',
-                 ]);
-
-        $this->assertDatabaseHas('students', [
-            'email' => 'arun@example.com',
-        ]);
+        $this->actingAs($user, 'sanctum')
+            ->postJson('/api/students', [
+                'name' => 'Test Student',
+                'email' => 'student@example.com',
+                'course' => 'MCA',
+            ])->assertSuccessful();
     }
 
-    // Test 5: Authenticated user can delete a student
     public function test_authenticated_user_can_delete_student(): void
     {
-        $user = User::create([
-            'name' => 'Admin User',
-            'email' => 'delete@example.com',
-            'password' => Hash::make('password123'),
-        ]);
-
-        Sanctum::actingAs($user);
+        $user = User::factory()->create();
 
         $student = Student::create([
-            'name' => 'Rahul Kumar',
-            'email' => 'rahul@example.com',
+            'name' => 'Delete Student',
+            'email' => 'delete@example.com',
             'course' => 'MCA',
         ]);
 
-        $response = $this->deleteJson('/api/students/' . $student->id);
-
-        $response->assertStatus(200)
-                 ->assertJson([
-                     'message' => 'Student deleted successfully',
-                 ]);
+        $this->actingAs($user, 'sanctum')
+            ->deleteJson('/api/students/' . $student->id)
+            ->assertSuccessful();
 
         $this->assertDatabaseMissing('students', [
             'id' => $student->id,

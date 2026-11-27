@@ -1,92 +1,142 @@
-# Student API – Laravel Deployment Guide
+# Student Management System
 
-## Project Overview
-A RESTful Student Management API developed using Laravel and Laravel Sanctum.
+A full-stack Student Management System built using Laravel, PHP, SQLite, HTML, CSS and JavaScript. It allows authenticated users to manage student records through a REST API and a simple web interface.
 
-## Technologies Used
-- PHP
-- Laravel
-- SQLite
-- Laravel Sanctum
-- REST API
-- Postman
+## Features
 
-## API Features
-- User Registration
-- User Login and Authentication
-- User Logout
-- Create Student
-- View All Students
-- View Single Student
-- Update Student
-- Delete Student
-
-## Production Configuration
-
-Update the `.env` file:
-
-```env
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=https://your-domain.com
-```
-
-Keep the APP_KEY and database credentials secure.
-
-## Deployment Commands
-
-```bash
-composer install --no-dev --optimize-autoloader
-php artisan optimize
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
-
-## File Permissions
-- Directories: 755
-- Files: 644
-- storage: Writable by the web server
-- bootstrap/cache: Writable by the web server
-
-## Database
-The application uses SQLite. Ensure the hosting server supports SQLite and has the required PHP extensions enabled.
-
-## Deployment Verification
-- Verify API routes.
-- Test registration and login.
-- Verify Sanctum authentication.
-- Test Student CRUD operations.
-- Verify the application using its live URL.
-
-## Security
-- Never upload `.env` to GitHub.
-- Disable APP_DEBUG in production.
-- Keep application keys and credentials private.
-- Configure HTTPS.
-
-## Hosting Status
-Deployment instructions prepared. Live hosting configuration and URL verification are pending.
-
-
-## Production Optimization
-
-The Laravel application was optimized successfully using:
-
-```bash
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-php artisan optimize
-```
-
-All optimization commands completed successfully.
-
-## API Testing
-
-Verified using Postman:
 - User registration and login
-- Sanctum Bearer Token authentication
-- Student CRUD operations
-- API route registration
-- Unauthorized access handling
+- Token-based API authentication using Laravel Sanctum
+- Add new students
+- View student records
+- Update student details
+- Delete student records
+- RESTful API endpoints
+- Responsive frontend interface
+- SQLite database
+- PHPUnit feature testing
+
+## Tech Stack
+
+- **Backend:** PHP, Laravel
+- **Frontend:** HTML, CSS, JavaScript
+- **Database:** SQLite
+- **Authentication:** Laravel Sanctum
+- **API Testing:** Postman
+- **Automated Testing:** PHPUnit
+- **Version Control:** Git and GitHub
+
+## Project Structure
+
+```text
+student-api/
+├── app/
+├── database/
+├── routes/
+├── tests/
+├── public/
+│   └── frontend/
+│       ├── index.html
+│       └── script.js
+├── frontend/
+│   ├── index.html
+│   └── script.js
+├── .env.example
+└── README.md
+```
+
+## Installation and Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Irannakumbar/cynaris-internship-Iranna.git
+```
+
+2. Open the project:
+
+```bash
+cd cynaris-internship-Iranna/student-api
+```
+
+3. Install dependencies:
+
+```bash
+composer install
+```
+
+4. Configure your environment:
+
+```bash
+copy .env.example .env
+php artisan key:generate
+```
+
+5. Configure SQLite in your `.env` file and ensure the database file exists.
+
+6. Run migrations:
+
+```bash
+php artisan migrate
+```
+
+7. Start the Laravel server:
+
+```bash
+php artisan serve
+```
+
+8. Open the frontend:
+
+```text
+http://127.0.0.1:8000/frontend/index.html
+```
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/register` | Register a user |
+| POST | `/api/login` | Login |
+| POST | `/api/logout` | Logout |
+| GET | `/api/students` | Get all students |
+| POST | `/api/students` | Add a student |
+| GET | `/api/students/{id}` | Get a student |
+| PUT | `/api/students/{id}` | Update a student |
+| DELETE | `/api/students/{id}` | Delete a student |
+
+Student endpoints require authentication.
+
+## Testing
+
+Run the automated tests:
+
+```bash
+php artisan test
+```
+
+**Current test result:** 7 tests passed, 8 assertions.
+
+## Screenshots
+
+Add screenshots of the following:
+
+- Student Management frontend
+- Student list
+- Add student operation
+- Update student operation
+- Delete student operation
+- Successful PHPUnit test results
+
+## Live Demo
+
+Not deployed yet.
+
+## Developer
+
+**Iranna Kumbar**
+
+GitHub: https://github.com/Irannakumbar
+
+## License
+
+This project was developed as part of an internship capstone project.
